@@ -1,0 +1,30 @@
+import { service } from 'src/boot/axios'
+
+//auth
+export function login(user) {
+  return service({
+    url: '/user/login',
+    method: 'post',
+    data: user
+  })
+}
+export function getInfoByToken(token) {
+  return service({
+    url: '/user/info',
+    method: 'get',
+    params: { token }
+  })
+}
+export function wechatAuth(appid, appsecret, code) {
+  return service({
+    url: '/wechatAuth/' + appid + '/' + appsecret + '/' + code,
+    method: 'get'
+  })
+}
+//auth deprecated
+export function logout() {
+  return service({
+    url: '/user/logout',
+    method: 'post'
+  })
+}
